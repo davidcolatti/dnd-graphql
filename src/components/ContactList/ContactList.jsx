@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import PropTypes from "prop-types";
 import "./contactlist.css";
+import { UPDATE_CONTACT } from "../../api/mutations";
+import { useMutation } from "@apollo/client";
 
 const ContactList = ({ contacts }) => {
   const [contactList, setContactList] = useState([]);
+  const [updateContact] = useMutation(UPDATE_CONTACT);
 
   useEffect(() => {
     setContactList(contacts);
@@ -12,12 +16,18 @@ const ContactList = ({ contacts }) => {
   function onDragEnd(result) {
     if (!result.destination) return;
     const { source, destination } = result;
-    const selectedContact = contactList[source.index];
-    const movedContact = contactList[destination.index];
 
-    let copiedList = [...contactList];
-    copiedList.splice(destination.index, 1, selectedContact);
-    copiedList.splice(source.index, 1, movedContact);
+    const copiedList = [...contactList];
+    const [removed] = copiedList.splice(source.index, 1);
+    copiedList.splice(destination.index, 0, removed);
+
+    updateContact({
+      variables: {
+        id: result.draggableId,
+        destinationIdx: destination.index,
+        sourceIdx: source.index,
+      },
+    });
 
     setContactList(copiedList);
   }
@@ -81,4 +91,7 @@ const ContactList = ({ contacts }) => {
   );
 };
 
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+};
 export default ContactList;
