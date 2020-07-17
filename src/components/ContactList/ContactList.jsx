@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./contactlist.css";
+import "./contactlist.scss";
 import { UPDATE_CONTACT } from "../../api/mutations";
 import { useMutation } from "@apollo/client";
 
@@ -37,8 +37,6 @@ const ContactList = ({ contacts }) => {
     <div className="container">
       <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
         <div className="column">
-          <h2>Contacts</h2>
-
           <div className="column-inner">
             <Droppable droppableId="dp1">
               {(provided) => {
@@ -65,8 +63,8 @@ const ContactList = ({ contacts }) => {
                                 style={{
                                   backgroundColor: snapshot.isDragging
                                     ? "#263B4A"
-                                    : "#456C86",
-                                  color: "white",
+                                    : "rgba(0, 0, 0, 0.5)",
+
                                   ...provided.draggableProps.style,
                                 }}
                               >

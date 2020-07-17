@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-inner {
+      margin: 8px;
+    }
+
+    &-list {
+      background: rgba(0, 0, 0, 0.212);
+      padding: 4px;
+      width: 250px;
+      min-height: 500px;
+    }
+  }
+
+  .drag-item {
+    user-select: none;
+    padding: 16px;
+    margin: 0 0 8px 0;
+    min-height: 50px;
+    color: #03e9f4;
+  }
+
+  .edit-btn {
+    color: #03e9f4;
+    text-decoration: none;
+
+    &:hover {
+      background: #03e9f4;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+        0 0 100px #03e9f4;
+    }
+  }
+}

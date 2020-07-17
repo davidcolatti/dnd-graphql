@@ -1,0 +1,35 @@
+.modal {
+  height: 50%;
+  width: 40vw;
+  min-width: 300px;
+  color: black;
+
+  .RichTextEditor__editor___1QqIU {
+    height: 35vh;
+  }
+
+  .modalBottom {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 50px;
+  }
+
+  .save {
+    margin-right: 5px;
+    background-color: #78bb78;
+  }
+
+  .cancel {
+    margin-left: 5px;
+    background-color: #eb4057;
+  }
+
+  .button {
+    font-size: 20px;
+    height: 30px;
+    color: white;
+    border: 0;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { ADD_CONTACT } from "../../api/mutations";
-import "./addcontact.css";
+import "./addcontact.scss";
 
 const AddContact = () => {
   const [fields, setFields] = useState({
@@ -41,16 +41,41 @@ const AddContact = () => {
   }
 
   return (
-    <div className="contact-form">
-      <label>Name</label>
-      <input onChange={(e) => handleChange(e)} type="text" name="name" />
-      <label>City</label>
-      <input onChange={(e) => handleChange(e)} type="text" name="city" />
-      <label>State</label>
-      <input onChange={(e) => handleChange(e)} type="text" name="state" />
-      <button onClick={() => addContact({ variables: fields })}>
+    <div className="contact-box">
+      <div className="input-box">
+        <input
+          type="text"
+          name="name"
+          required=""
+          onChange={(e) => handleChange(e)}
+        />
+        <label>Name</label>
+      </div>
+      <div className="input-box">
+        <input
+          type="text"
+          name="city"
+          required=""
+          onChange={(e) => handleChange(e)}
+        />
+        <label>City</label>
+      </div>
+      <div className="input-box">
+        <input
+          type="text"
+          name="state"
+          required=""
+          onChange={(e) => handleChange(e)}
+        />
+        <label>State</label>
+      </div>
+      <a onClick={() => addContact({ variables: fields })}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         Add Contact
-      </button>
+      </a>
     </div>
   );
 };

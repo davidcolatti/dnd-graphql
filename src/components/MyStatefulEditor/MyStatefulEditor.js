@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { EDIT_CONTACT } from "../../api/mutations";
-import "./mystatefuleditor.css";
+import "./mystatefuleditor.scss";
 
 const MyStatefulEditor = ({ onChange }) => {
   const [value, setValue] = useState(RichTextEditor.createEmptyValue());
