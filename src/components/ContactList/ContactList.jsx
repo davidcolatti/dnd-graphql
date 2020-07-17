@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./contactlist.css";
 import { UPDATE_CONTACT } from "../../api/mutations";
@@ -70,9 +71,9 @@ const ContactList = ({ contacts }) => {
                                 }}
                               >
                                 <p>{`${item.name} lives in ${item.city}, ${item.state}`}</p>
-                                <a className="edit-btn" href="/">
+                                <Link to={`/${item.id}`} className="edit-btn">
                                   Edit
-                                </a>
+                                </Link>
                               </div>
                             );
                           }}
